@@ -11,17 +11,19 @@ const db = require("./models");
 const session = require("express-session");
 
 //Linkedin Login using node js and passport
-const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-const routes = require('./api-routes.js');
-const config = require('./config')
+const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
+const routes = require("./routes/api-routes");
+const config = require("./config");
 
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 
-app.use(session({
-  resave: false,
-  saveUninitialized: true,
-  secret: 'SECRET'
-}));
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: true,
+    secret: "SECRET",
+  })
+);
 
 passport.serializeUser(function (user, cb) {
   cb(null, user);
@@ -31,15 +33,19 @@ passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
 
-passport.use(new LinkedInStrategy({
-  clientID: config.linkedinAuth.clientID,
-  clientSecret: config.linkedinAuth.clientSecret,
-  callbackURL: config.linkedinAuth.callbackURL,
-  scope: ['r_emailaddress', 'r_liteprofile'],
-}, function (token, tokenSecret, profile, done) {
-  return done(null, profile);
-}
-));
+passport.use(
+  new LinkedInStrategy(
+    {
+      clientID: config.linkedinAuth.clientID,
+      clientSecret: config.linkedinAuth.clientSecret,
+      callbackURL: config.linkedinAuth.callbackURL,
+      scope: ["r_emailaddress", "r_liteprofile"],
+    },
+    function (token, tokenSecret, profile, done) {
+      return done(null, profile);
+    }
+  )
+);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -56,12 +62,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Define API routes here
-const routes = require("./controllers/memberController.js");
-require("./routes/html-routes.js")(app);
-require("./routes/author-api-routes.js")(app);
-require("./routes/post-api-routes.js")(app);
+// require("./controllers/memberController.js");
+// require("./routes/html-routes.js")(app);
+// require("./routes/api-routes.js")(app);
+// require("./routes/post-api-routes.js")(app);
 
-app.use('/', routes);
+app.use("/", routes);
 
 // Requiring our routes
 require("./routes/html-routes")(app);

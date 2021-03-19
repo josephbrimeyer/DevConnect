@@ -21,9 +21,10 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bcryptjs": "2.4.3",
     "dotenv": "^8.2.0",
+    "ejs": "^3.1.2",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
@@ -31,9 +32,8 @@
     "mongoose": "^5.10.1",
     "mysql2": "^1.7.0",
     "passport": "^0.4.1",
+    "passport-linkedin-oauth2": "^2.0.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^5.22.3",
-    "ejs": "^3.1.2",
-    "passport-linkedin-oauth2": "^2.0.0"
+    "sequelize": "^5.22.3"
   }
 }

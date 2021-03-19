@@ -66,18 +66,18 @@ module.exports = function (app) {
     db.Ad.create({
       routeName: routeName,
       name: ad.name,
-      comments: ad.comments
+      comments: ad.comments,
     });
     res.status(204).end();
   });
 
-  Get route for returning posts of a specific category
+  // Get route for returning posts of a specific category
   app.get("/api/views/:routeName", (req, res) => {
     db.Ad.findOne({
       where: {
-        routeName: req.params.routeName
-      }
-    }).then(dbPost => {
+        routeName: req.params.routeName,
+      },
+    }).then((dbPost) => {
       res.json(dbPost);
     });
   });
