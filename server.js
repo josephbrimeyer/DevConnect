@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -7,13 +8,18 @@ process.env.DB_PASSWORD;
 
 // Requiring passport as we've configured it
 const passport = require("passport");
+const localStrategy = require("passport-local");
+const passportLocalMongoose = require("passport-local-mongoose");
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+const methodOverride = require("method-override");
+
 const db = require("./models");
 const session = require("express-session");
 
 //Linkedin Login using node js and passport
-const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
-const routes = require("./routes/api-routes");
-const config = require("./config");
+// const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
+// const routes = require("./routes/api-routes");
+// const config = require("./config");
 
 app.set("view engine", "ejs");
 
