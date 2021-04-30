@@ -19,10 +19,10 @@ let bodyParser = require("body-parser");
 const db = require("./models/index.js");
 const User = require("./models/User.js");
 
-// Middleware
+// Middleware.
 app.set("view engine", "ejs");
 
-//User session
+//User session.
 app.use(
   session({
     secret: "devconnect",
@@ -33,11 +33,11 @@ app.use(
 
 app.use(methodOverride("_method"));
 
-// parse incoming data into a JS object attached to the request
+// Parse incoming data into a JS object attached to the request.
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// GoogleStrategy within Passport
+// GoogleStrategy within Passport.
 passport.use(
   new GoogleStrategy(
     {
@@ -48,16 +48,16 @@ passport.use(
     (accessToken, refreshToken, profile, done) => {
       console.log(profile);
 
-      // passport callback function
-      //check if user already exists in our db with the given profile ID
+      // Passport callback function.
+      // Checks if the user already exists in our db with the given profile ID.
       User.findOne({ googleId: profile.id }).then((currentUser) => {
         if (currentUser) {
           console.log(profile);
 
-          //if we already have a record with the given profile ID
+          // If we already have a record with the given profile ID.
           done(null, currentUser);
         } else {
-          //if not, create a new user
+          // If not, creates a new user.
           user = new User({
             username: profile.displayName,
             email: profile.emails[0].value,
@@ -73,11 +73,11 @@ passport.use(
   )
 );
 
-//connect passport packages
+// Connect passport packages.
 app.use(passport.initialize());
 app.use(passport.session());
 
-//read and encode data from the session
+// Read and encode data from the session.
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -91,18 +91,19 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-// Serve up static assets (usually on heroku)
+// Serve up static assets (usually on heroku).
 app.use(express.static("client/build"));
 
-//homepage route
+// Homepage route.
 app.get("/", (req, res) => {
   res.send("DevConnect homepage");
 });
 
-// routes
+// Routes.
 const userRouter = require("./routes/users.js");
 app.use("/users", userRouter);
 
+// Server connection.
 app.listen(PORT, () => {
   console.log(`🌎 ==> Server is now listening on port ${PORT}!`);
 });
