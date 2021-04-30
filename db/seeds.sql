@@ -23,5 +23,5 @@ VALUES
 INSERT INTO developers
     (lastName, firstName, city, headline, summary, skill1, skill2, skill3)
 VALUES
-    ("Winner", "Doug", "Boston", "A back web developer specializing in databases.", "I am a back end web developer who specializes in data management using SQL.", "Express", "SQL", "Node.js");
+    ("Winner", "Doug", "Boston", "A back end web developer specializing in databases.", "I am a back end web developer who specializes in data management using SQL.", "Express", "SQL", "Node.js");
 
