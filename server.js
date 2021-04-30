@@ -1,5 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
+passport = require("passport");
+localStrategy = require("passport-local");
+passportLocalMongoose = require("passport-local-mongoose");
+GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+
 const path = require("path");
 
 const PORT = process.env.PORT || 3001;
@@ -8,15 +13,17 @@ process.env.API_KEY;
 process.env.DB_PASSWORD;
 
 // Requiring passport as we've configured it
-const passport = require("passport");
-const localStrategy = require("passport-local");
-const passportLocalMongoose = require("passport-local-mongoose");
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+// const passport = require("passport");
+// const localStrategy = require("passport-local");
+// const passportLocalMongoose = require("passport-local-mongoose");
+// const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const methodOverride = require("method-override");
+const session = require("express-session");
+// let bodyParser = require("body-parser");
 
 const db = require("./models/index.js");
-const User = require("./models/user.js");
-const session = require("express-session");
+const User = require("./models/User.js");
+// const session = require("express-session");
 let bodyParser = require("body-parser");
 
 //Linkedin Login using node js and passport
@@ -144,7 +151,7 @@ app.get("/", (req, res) => {
 // routes
 const userRouter = require("./routes/users.js");
 app.use("/users", userRouter);
-app.use("/", routes);
+// app.use("/", routes);
 
 // Requiring our routes
 // require("./routes/html-routes")(app);
@@ -157,5 +164,5 @@ app.use("/", routes);
 // });
 
 app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+  console.log(`🌎 ==> Server is now listening on port ${PORT}!`);
 });
