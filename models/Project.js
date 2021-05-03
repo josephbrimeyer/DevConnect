@@ -1,24 +1,29 @@
 const mongoose = require("mongoose");
-const permissions = require("mongoose-permissions");
 const Schema = mongoose.Schema;
-const passportLocalMongoose = require("passport-local-mongoose");
 
-const projectSchema = new Schema({
-  jobAdTitle: {
-    type: String,
+const projectSchema = new Schema(
+  {
+    jobAdTitle: {
+      type: String,
+      maxLength: 100,
+    },
+    content: String,
     required: true,
-  },
-  jobDescription: {
-    type: String,
+    jobDescription: {
+      type: String,
+      maxLength: 250,
+    },
+    content: String,
     required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-}).plugin(permissions);
 
-userSchema.plugin(passportLocalMongoose);
-const Project = mongoose.model("Project", userSchema);
+    email: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+
+const Project = mongoose.model("Project", projectSchema);
 
 module.exports = Project;

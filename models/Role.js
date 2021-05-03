@@ -55,5 +55,5 @@ const roleSchema = new Schema([
   },
 ]);
 
-const Role = mongoose.model("Role", userSchema);
+const Role = mongoose.model("Role", roleSchema);
 module.exports = Role;
