@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 const projectSchema = new Schema(
   {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
     jobAdTitle: {
       type: String,
       maxLength: 100,
