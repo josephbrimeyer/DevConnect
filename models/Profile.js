@@ -45,6 +45,6 @@ const ProfileSchema = new Schema({
 }).plugin(permissions);
 
 userSchema.plugin(passportLocalMongoose);
-const Project = mongoose.model("Project", userSchema);
+const Profile = mongoose.model("Profile", userSchema);
 
-module.exports = Project;
+module.exports = Profile;
