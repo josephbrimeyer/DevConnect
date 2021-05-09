@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^4.1.0",
+    "concurrently": "^4.1.2",
     "nodemon": "^1.18.7"
   },
   "dependencies": {
@@ -29,8 +29,10 @@
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.1",
+    "hosted-git-info": "^4.0.2",
     "if-env": "^1.0.4",
     "jquery": "^3.5.1",
+    "lodash": "^4.17.21",
     "method-override": "^3.0.0",
     "mongoose": "^5.10.1",
     "mongoose-permissions": "^1.0.0",
@@ -40,6 +42,8 @@
     "passport-linkedin-oauth2": "^2.0.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.1.0",
-    "sequelize": "^5.22.3"
+    "sequelize": "^5.22.3",
+    "y18n": "^5.0.8",
+    "yargs-parser": "^20.2.7"
   }
 }
