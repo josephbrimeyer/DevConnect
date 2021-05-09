@@ -1,3 +1,6 @@
+// Logo:
+// logomaker.thehoth.com/?project=11253887
+
 require("dotenv").config();
 const axios = require("axios");
 const BASEURL = "https://linkedin-id-search-v2.p.rapidapi.com/api/";

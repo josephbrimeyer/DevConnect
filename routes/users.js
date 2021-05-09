@@ -43,4 +43,21 @@ router.get(
   }
 );
 
+router.get(
+  "/auth/linkedin",
+  passport.authenticate("linkedin"),
+  function (req, res) {
+    // The request will be redirected to LinkedIn for authentication, so this
+    // function will not be called.
+  }
+);
+
+router.get(
+  "/auth/linkedin/callback",
+  passport.authenticate("linkedin", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  })
+);
+
 module.exports = router;
